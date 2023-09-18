@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="share.css">
+    <title>RSM</title>
+</head>
+<body>
+    <div id="layout">
+        <div id="main">
+            <h1 id="title">Fewer-token Neural Speech Codec with Time-invariant Codes</h1>
+            <div id="content">
+                <h2>Abstract</h2>
+                <p>Language model based text-to-speech (TTS) models, like VALL-E, have gained attention for their outstanding in-context learning capability in zero-shot scenarios. Neural speech codec is a critical component of these models, which can convert speech into discrete token representations. However, excessive token sequences from the codec may negatively affect prediction accuracy and restrict the progression of Language model based TTS models. To address this issue, this paper proposes a novel neural speech codec with time-invariant codes named TiCodec. By encoding and quantizing time-invariant information into a separate code, TiCodec can reduce the amount of frame-level information that needs encoding, effectively decreasing the number of tokens as codes of speech. Furthermore, this paper introduces a time-invariant encoding consistency loss to enhance the consistency of time-invariant code within an utterance and force it to capture more global information, which can benefit the zero-shot TTS task. Experimental results demonstrate that TiCodec can not only enhance the quality of reconstruction speech with fewer tokens but also increase the similarity and naturalness, as well as reduce the word error rate of the synthesized speech by the TTS model.</p>
+                <img src="imgs/Ticodec.png" alt="Framework of the voice conversion and speaker representation control">
+                <h2>Demo</h2>
+                <h3>TiCodec reconstruction</h3>
+                <!-- <div class="center">      
+                    <table class="triline">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Describe</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>B01</td>
+                            <td>FreeVC, A pretrained speaker encoder is used.</td>
+                        </tr>
+                        <tr>
+                            <td>B01</td>
+                            <td>FreeVC-s, jointly trained speaker encoder is used.</td>
+                        </tr>
+                        <tr>
+                            <td>B01</td>
+                            <td>Replace speaker encoder in FreeVC with GST.</td>
+                        </tr>
+                        <tr>
+                            <td>P01</td>
+                            <td>Replace speaker encoder in FreeVC with 4 layers RSM. </td>
+                        </tr>
+                        <tr>
+                            <td>P02</td>
+                            <td>Ablation study for P01, RSM without residual connections.</td>
+                        </tr>
+                    </table>
+                </div>
+                <h3>Source</h3>
+                <audio src="audios/gt/p225_002.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <tr>
+                            <th>Target</th>
+                            <td><audio src="audios/gt/14_208_000042_000000.wav" controls></audio></td>
+                            <td><audio src="audios/gt/17_363_000005_000000.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>P01</th>
+                            <td><audio src="audios/rsm/p225_002.14_208_000042_000000.wav" controls></audio></td>
+                            <td><audio src="audios/rsm/p225_002.17_363_000005_000000.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>P02</th>
+                            <td><audio src="audios/wo/p225_002.14_208_000042_000000.wav" controls></audio></td>
+                            <td><audio src="audios/wo/p225_002.17_363_000005_000000.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>B01</th>
+                            <td><audio src="audios/pretrain/p225_002.14_208_000042_000000.wav" controls></audio></td>
+                            <td><audio src="audios/pretrain/p225_002.17_363_000005_000000.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>B02</th>
+                            <td><audio src="audios/s/p225_002.14_208_000042_000000.wav" controls></audio></td>
+                            <td><audio src="audios/s/p225_002.17_363_000005_000000.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>B03</th>
+                            <td><audio src="audios/gst/p225_002.14_208_000042_000000.wav" controls></audio></td>
+                            <td><audio src="audios/gst/p225_002.17_363_000005_000000.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div> -->
+                <h4>GT</h4>
+                <audio src="audios/TiCodec/GT/0_7176_88083_000024_000007.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>EnCodec</th>
+                            <td><audio src="audios/TiCodec/encodec-1/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/encodec-2/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/encodec-4/0_7176_88083_000024_000007.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/TiCodec/bl-1g1r/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/bl-1g2r/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/bl-1g4r/0_7176_88083_000024_000007.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/TiCodec/gl-1g1r/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g2r/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r/0_7176_88083_000024_000007.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/TiCodec/gl-1g1r-cos/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r-cos/0_7176_88083_000024_000007.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r-cos/0_7176_88083_000024_000007.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>TiCodec zero-shot TTS</h3>
+
+                <!-- <h4>Prompt Speech 1</h4>
+                <audio src="audios/valle/target/121_121726_000025_000000-1811.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/valle/bl-1g1r/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g2r/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g4r/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/valle/gl-1g1r/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/valle/gl-1g1r-cos/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r-cos/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r-cos/121_121726_000025_000000-1811_from_121_121726_000029_000003-1806.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div> -->
+                <!-- <h4>Prompt Speech 2</h4>
+                <audio src="audios/valle/target/121_121726_000029_000003-1806.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/valle/bl-1g1r/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g2r/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g4r/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/valle/gl-1g1r/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/valle/gl-1g1r-cos/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r-cos/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r-cos/121_121726_000029_000003-1806_from_121_127105_000038_000001-1830.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div> -->
+
+                <!-- 260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav -->
+
+                <!-- <h4>Prompt Speech 3</h4>
+                <audio src="audios/valle/target/260_123440_000023_000003-9.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/valle/bl-1g1r/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g2r/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g4r/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/valle/gl-1g1r/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/valle/gl-1g1r-cos/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r-cos/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r-cos/260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div> -->
+
+                <!-- 260_123440_000024_000001-11_from_260_123440_000023_000003-9 -->
+
+                <h4>Prompt Speech 1</h4>
+                <audio src="audios/valle/target/260_123440_000024_000001-11.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/valle/bl-1g1r/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g2r/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g4r/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/valle/gl-1g1r/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/valle/gl-1g1r-cos/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r-cos/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r-cos/260_123440_000024_000001-11_from_260_123440_000023_000003-9.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- 1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154 -->
+
+                <h4>Prompt Speech 2</h4>
+                <audio src="audios/valle/target/1580_141083_000041_000001-2155.wav" controls></audio>
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/valle/bl-1g1r/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g2r/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                            <td><audio src="audios/valle/bl-1g4r/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/valle/gl-1g1r/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/valle/gl-1g1r-cos/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g2r-cos/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                            <td><audio src="audios/valle/gl-1g4r-cos/1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <!--
+                <h2>Voice Control</h2>
+                <img src="imgs/fig2.png" alt="Mel-spectrogram of synthesized speech after replacing speaker representations extracted by RSM layer by layer">
+                <div class="row">
+                    <audio src="audios/ve/origin.wav" controls></audio>
+                    <audio src="audios/ve/layer1.wav" controls></audio>
+                    <audio src="audios/ve/layer2.wav" controls></audio>
+                    <audio src="audios/ve/layer3.wav" controls></audio>
+                    <audio src="audios/ve/layer4.wav" controls></audio>
+                    <audio src="audios/ve/all.wav" controls></audio>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
