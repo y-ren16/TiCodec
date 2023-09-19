@@ -33,6 +33,7 @@ iframe {
 
 audio {
     display: block;
+    width: 180px;
 }
 
 .center {
