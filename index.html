@@ -13,7 +13,7 @@
             <div id="content">
                 <h2>Abstract</h2>
                 <p>Language model based text-to-speech (TTS) models, like VALL-E, have gained attention for their outstanding in-context learning capability in zero-shot scenarios. Neural speech codec is a critical component of these models, which can convert speech into discrete token representations. However, excessive token sequences from the codec may negatively affect prediction accuracy and restrict the progression of Language model based TTS models. To address this issue, this paper proposes a novel neural speech codec with time-invariant codes named TiCodec. By encoding and quantizing time-invariant information into a separate code, TiCodec can reduce the amount of frame-level information that needs encoding, effectively decreasing the number of tokens as codes of speech. Furthermore, this paper introduces a time-invariant encoding consistency loss to enhance the consistency of time-invariant code within an utterance and force it to capture more global information, which can benefit the zero-shot TTS task. Experimental results demonstrate that TiCodec can not only enhance the quality of reconstruction speech with fewer tokens but also increase the similarity and naturalness, as well as reduce the word error rate of the synthesized speech by the TTS model.</p>
-                <img src="imgs/Ticodec-1.png" alt="Framework of the voice conversion and speaker representation control">
+                <img src="imgs/Ticodec.png" alt="Framework of the voice conversion and speaker representation control">
                 <h2>Code</h2>
                 <p>Our Code is available at: </p>
                 <a href="https://github.com/y-ren16/TiCodec">TiCodec</a>
