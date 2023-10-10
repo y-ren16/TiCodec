@@ -23,8 +23,8 @@
                     src="http://images2015.cnblogs.com/blog/682661/201612/682661-20161210223653179-1870729401.png"
                     alt="Fork me on GitHub" >
                 </a> -->
-                <h2>Demo</h2>
-                <h3>TiCodec reconstruction</h3>
+                <h2>Demo of reconstruction</h2>
+                <!-- <h3>TiCodec reconstruction</h3> -->
                 <!-- <div class="center">      
                     <table class="triline">
                         <thead>
@@ -92,8 +92,11 @@
                         </tr>
                     </table>
                 </div> -->
-                <h4>GT</h4>
+                <h3>Eg 1</h3>
+                <!-- <h5>GT</h5> -->
+                <text>GT</text>
                 <audio src="audios/TiCodec/GT/0_7176_88083_000024_000007.wav" controls></audio>
+                <!-- <h5>reconstruction</h5> -->
                 <br>
                 <div class="center">
                     <table>
@@ -132,9 +135,95 @@
                     </table>
                 </div>
 
-                <h3>TiCodec zero-shot TTS</h3>
+                <h3>Eg 2</h3>
+                <!-- <h5>GT</h5> -->
+                <text>GT</text>
+                <audio src="audios/TiCodec/GT/1_8224_274384_000017_000001.wav" controls></audio>
+                <!-- <h5>reconstruction</h5> -->
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>EnCodec</th>
+                            <td><audio src="audios/TiCodec/encodec-1/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/encodec-2/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/encodec-4/1_8224_274384_000017_000001.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/TiCodec/bl-1g1r/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/bl-1g2r/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/bl-1g4r/1_8224_274384_000017_000001.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/TiCodec/gl-1g1r/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g2r/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r/1_8224_274384_000017_000001.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/TiCodec/gl-1g1r-cos/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r-cos/1_8224_274384_000017_000001.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r-cos/1_8224_274384_000017_000001.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div>
 
-                <!-- <h4>Prompt Speech 1</h4>
+                <h3>Eg 3</h3>
+                <text>GT</text>
+                <!-- <h5>GT</h5> -->
+                <audio src="audios/TiCodec/GT/7_3570_5694_000014_000021.wav" controls></audio>
+                <!-- <h5>reconstruction</h5> -->
+                <br>
+                <div class="center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>1 token sequence</th>
+                                <th>2 token sequences</th>
+                                <th>4 token sequences</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th>EnCodec</th>
+                            <td><audio src="audios/TiCodec/encodec-1/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/encodec-2/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/encodec-4/7_3570_5694_000014_000021.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>HifiCodec</th>
+                            <td><audio src="audios/TiCodec/bl-1g1r/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/bl-1g2r/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/bl-1g4r/7_3570_5694_000014_000021.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec</th>
+                            <td><audio src="audios/TiCodec/gl-1g1r/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g2r/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r/7_3570_5694_000014_000021.wav" controls></audio></td>
+                        </tr>
+                        <tr>
+                            <th>TiCodec+Lc</th>
+                            <td><audio src="audios/TiCodec/gl-1g1r-cos/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r-cos/7_3570_5694_000014_000021.wav" controls></audio></td>
+                            <td><audio src="audios/TiCodec/gl-1g4r-cos/7_3570_5694_000014_000021.wav" controls></audio></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h2>Demo of zero-shot TTS</h2>
+
+                <!-- <h3>Prompt Speech 1</h3>
                 <audio src="audios/valle/target/121_121726_000025_000000-1811.wav" controls></audio>
                 <br>
                 <div class="center">
@@ -167,7 +256,7 @@
                         </tr>
                     </table>
                 </div> -->
-                <!-- <h4>Prompt Speech 2</h4>
+                <!-- <h3>Prompt Speech 2</h3>
                 <audio src="audios/valle/target/121_121726_000029_000003-1806.wav" controls></audio>
                 <br>
                 <div class="center">
@@ -203,7 +292,7 @@
 
                 <!-- 260_123440_000023_000003-9_from_260_123440_000024_000002-6.wav -->
 
-                <!-- <h4>Prompt Speech 3</h4>
+                <!-- <h3>Prompt Speech 3</h3>
                 <audio src="audios/valle/target/260_123440_000023_000003-9.wav" controls></audio>
                 <br>
                 <div class="center">
@@ -239,7 +328,7 @@
 
                 <!-- 260_123440_000024_000001-11_from_260_123440_000023_000003-9 -->
 
-                <h4>Prompt Speech 1</h4>
+                <h3>Prompt Speech 1</h3>
                 <audio src="audios/valle/target/8230_279154_000022_000004-2556.wav" controls></audio>
                 <br>
                 <div class="center">
@@ -274,7 +363,7 @@
                 </div>
                 
 
-                <!-- <h4>Prompt Speech 2</h4>
+                <!-- <h3>Prompt Speech 2</h3>
                 <audio src="audios/valle/target/260_123440_000024_000001-11.wav" controls></audio>
                 <br>
                 <div class="center">
@@ -310,7 +399,7 @@
 
                 <!-- 1580_141083_000041_000001-2155_from_1580_141083_000024_000000-2154 -->
 
-                <h4>Prompt Speech 2</h4>
+                <h3>Prompt Speech 2</h3>
                 <audio src="audios/valle/target/1580_141083_000041_000001-2155.wav" controls></audio>
                 <br>
                 <div class="center">
@@ -344,7 +433,7 @@
                     </table>
                 </div>
 
-                <h4>Prompt Speech 3</h4>
+                <h3>Prompt Speech 3</h3>
                 <audio src="audios/valle/target/260_123440_000024_000001-11.wav" controls></audio>
                 <br>
                 <div class="center">
