@@ -1,0 +1,9 @@
+torch
+torchaudio
+tensorboard
+einops
+matplotlib
+pyyaml
+tqdm
+librosa==0.8.0
+torchmetrics
