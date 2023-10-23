@@ -10,9 +10,9 @@ pip install -r requirement.txt
 ```
 ### dataset preparation
 gengenerate Lib_resources/*.lst
-train.lst
-dev.lst
-test.lst
+(eg: train.lst;
+dev.lst;
+test.lst;)
 ### Train
 ```
 cd TiCodec/egs/TiCodec-24k-320d
@@ -31,7 +31,7 @@ test_conv_1g4r_8g3k1s_cos_from_head.sh
 python metrics.py
 ```
 ## Acknowledgements
-This implementation uses parts of the code from the following Github repos: [AcademiCodec](https://github.com/yangdongchao/AcademiCodec.)
+This implementation uses parts of the code from the following Github repos: [AcademiCodec](https://github.com/yangdongchao/AcademiCodec)
 ## Citations
 If you find this code useful in your research, please consider citing:
 ```
