@@ -8,11 +8,24 @@ https://y-ren16.github.io/TiCodec is the demo page of the paper 'Fewer-token Neu
 ```
 pip install -r requirement.txt
 ```
+Install [visqol](visqol) for calculating objective metrics.
 ### dataset preparation
-gengenerate Lib_resources/*.lst
-(eg: train.lst;
-dev.lst;
-test.lst;)
+Gengenerate ``./Lib_resources/*/*.lst`` for training.
+```
+.
+├── Lib_resources
+│   └── LibriTTS
+│       ├── dev.lst
+│       ├── test.lst
+│       └── train.lst
+```
+Put ``*.wav`` in ``./egs/Paper_Data/GT/*/\*.wav`` for metrics.
+```
+.
+├── Paper_Data
+│   ├── GEN
+│   └── GT
+```
 ### Train
 ```
 cd TiCodec/egs/TiCodec-24k-320d
