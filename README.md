@@ -19,7 +19,7 @@ Gengenerate ``./Lib_resources/*/*.lst`` for training.
 │       ├── test.lst
 │       └── train.lst
 ```
-Put ``*.wav`` in ``./egs/Paper_Data/GT/*/\*.wav`` for metrics.
+Put ``*.wav`` in ``./egs/Paper_Data/GT/*/*.wav`` for metrics.
 ```
 .
 ├── Paper_Data
