@@ -1,0 +1,12 @@
+ckpt
+outputdir
+__pycache__
+*.wav
+*.npy
+egs/HiFi-Codec-24k-320d/bkp_ckpt/
+egs/HiFi-Codec-24k-320d/logs*/
+output/
+data/
+bkp/
+*.csv
+logs*/
