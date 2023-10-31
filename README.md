@@ -48,12 +48,10 @@ This implementation uses parts of the code from the following Github repos: [Aca
 ## Citations
 If you find this code useful in your research, please consider citing:
 ```
-@article{Ren2023FewertokenNS,
+@article{ren2023fewer,
   title={Fewer-token Neural Speech Codec with Time-invariant Codes},
-  author={Yong Ren and Tao Wang and Jiangyan Yi and Le Xu and Jianhua Tao and Chuyuan Zhang and Jun Zhou},
-  journal={ArXiv},
-  year={2023},
-  volume={abs/2310.00014},
-  url={https://api.semanticscholar.org/CorpusID:263334107}
+  author={Ren, Yong and Wang, Tao and Yi, Jiangyan and Xu, Le and Tao, Jianhua and Zhang, Chuyuan and Zhou, Junzuo},
+  journal={arXiv preprint arXiv:2310.00014},
+  year={2023}
 }
 ```
