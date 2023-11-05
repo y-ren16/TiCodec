@@ -2,7 +2,7 @@
 source path.sh
 
 ckpt_name=logs_convonly_Lib_1g4r_cos_from_head
-ckpt=logs_conv_only/logs_convonly_Lib_1g4r_cos_from_head/g_00255000
+ckpt=logs_conv_only/logs_convonly_Lib_1g4r_cos_from_head/g_00250000
 echo checkpoint path: ${ckpt}
 output_root_dir=../Paper_Data/GEN
 output=${output_root_dir}/${ckpt_name}

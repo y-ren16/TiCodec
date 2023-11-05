@@ -3,7 +3,7 @@ source path.sh
 
 # 1 baseline 1 group
 ckpt_name=logs_convonly_Lib_1g2r_cos_from_head
-ckpt=logs_conv_only/logs_convonly_Lib_1g2r_cos_from_head/g_00250000_changed
+ckpt=logs_conv_only/logs_convonly_Lib_1g2r_cos_from_head/g_00250000
 echo checkpoint path: ${ckpt}
 output_root_dir=../Paper_Data/GEN
 # the path of test wave
