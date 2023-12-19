@@ -21,7 +21,7 @@ do
     echo "${output}${outputdir[$i]}"
     mkdir -p ${output}${outputdir[$i]}
     
-    CUDA_VISIBLE_DEVICES=2 python3 ${BIN_DIR}/vqvae_copy_syn.py \
+    CUDA_VISIBLE_DEVICES=0 python3 ${BIN_DIR}/vqvae_copy_syn.py \
         --model_path=${ckpt} \
         --config_path=config_24k_320d_conv_1g1r_8g3k1s.json \
         --input_wavdir=$item \
