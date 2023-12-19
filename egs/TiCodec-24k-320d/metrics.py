@@ -105,12 +105,6 @@ for model_name in model_names:
         sisdr = []
         mcd = []
         for i in tqdm(range(len(signal_all))):
-            if signal_name[i]=="43_237_126133_000039_000001.wav":
-                continue
-            if signal_name[i]=="82_YfgbeeAqRWsc_resampled_24000.wav":
-                continue
-            if signal_name[i]=="12_mixture_resampled_24000_segment4.wav":
-                continue
             signal = signal_all[i]
             recons = y_recons_all[i]
             try:
