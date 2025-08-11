@@ -20,7 +20,7 @@ naturalness, as well as reduce the word error rate of the synthesized speech by 
 ```
 pip install -r requirement.txt
 ```
-Install [visqol](visqol) for calculating objective metrics.
+Install [visqol](https://github.com/google/visqol) for calculating objective metrics.
 ### 2.2 Dataset preparation
 Gengenerate ``./Lib_resources/*/*.lst`` for training.
 ```
@@ -69,7 +69,7 @@ If our code and paper help you, please kindly cite:
 ```
 
 ## 4. Acknowledgements
-This implementation uses parts of the code from the following Github repos: [AcademiCodec](https://github.com/yangdongchao/AcademiCodec)
+This repo is based on [AcademiCodec](https://github.com/yangdongchao/AcademiCodec). We highly appreciate their contributions to this community.
 
 ## License Agreement
 
