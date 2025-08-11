@@ -58,11 +58,13 @@ python metrics.py
 ## 3. Citations
 If our code and paper help you, please kindly cite:
 ```
-@article{ren2023fewer,
-  title={Fewer-token Neural Speech Codec with Time-invariant Codes},
-  author={Ren, Yong and Wang, Tao and Yi, Jiangyan and Xu, Le and Tao, Jianhua and Zhang, Chuyuan and Zhou, Junzuo},
-  journal={arXiv preprint arXiv:2310.00014},
-  year={2023}
+@inproceedings{ren2024fewer,
+  title={Fewer-token neural speech codec with time-invariant codes},
+  author={Ren, Yong and Wang, Tao and Yi, Jiangyan and Xu, Le and Tao, Jianhua and Zhang, Chu Yuan and Zhou, Junzuo},
+  booktitle={ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={12737--12741},
+  year={2024},
+  organization={IEEE}
 }
 ```
 
